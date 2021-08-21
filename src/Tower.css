@@ -1,0 +1,39 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.wrapper {
+    box-sizing: border-box;
+    padding: 5px;
+    width: 100%;
+    margin-top:10px;
+}
+
+.wrapper .row {
+    font-size: 0px;
+    text-align: center;
+}
+
+.wrapper .row * {
+    font-size: 14px;
+}
+
+.wrapper .row:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.wrapper .block {
+    background-color: deeppink;
+    color: #fff;
+    text-align: center;
+
+    display: inline-block;
+    height: 50px;
+    width: 13%;
+}

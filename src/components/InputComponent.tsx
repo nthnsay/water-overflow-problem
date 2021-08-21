@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import '../InputComponent.scss';
+import TowerComponent from "./TowerComponent";
 
 const InputComponent =()=>{
   const [volume, setVolume] = useState<string>();
@@ -21,6 +22,7 @@ const InputComponent =()=>{
           <button type="reset" onClick={()=>{setVolume("")}}>Reset</button>
         </div>
       </div>
+      <TowerComponent/>
 
 
       </>
