@@ -29,11 +29,14 @@ html, body {
 }
 
 .wrapper .block {
-    background-color: deeppink;
     color: #fff;
     text-align: center;
 
     display: inline-block;
     height: 50px;
-    width: 13%;
+    width: 50px;
+}
+.wrapper .block .glassImage{
+    height: 50px;
+    width: 50px;
 }

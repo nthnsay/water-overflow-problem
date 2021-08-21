@@ -1,9 +1,26 @@
 import React, { useState } from "react";
 import '../InputComponent.scss';
 import TowerComponent from "./TowerComponent";
+import {CupTower} from "../domain/CupTower";
 
-const InputComponent =()=>{
-  const [volume, setVolume] = useState<string>();
+const InputComponent: React.FC =()=>{
+  const [volume, setVolume] = useState<string>("");
+  const [showTower, setShowTower] = useState<boolean>(false);
+
+  const [waterForTower, setWaterForTower]= useState<number>(0)
+  const [cupTower, setCupTower] = useState<CupTower>(new CupTower())
+  const handleFill=()=>{
+    if(!isNaN(Number(volume))){
+      cupTower.fillCupTower(Number(volume)* 1000)
+      setShowTower(true)
+      console.log()
+    }
+  }
+  const handleReset=()=>{
+    setVolume("")
+    setCupTower(new CupTower())
+    setShowTower(false)
+  }
 
   return(
     <>
@@ -18,11 +35,12 @@ const InputComponent =()=>{
           <span className="input__label">Enter volume in litres(L)</span>
         </label>
         <div className="button-group">
-          <button>Fill cups</button>
-          <button type="reset" onClick={()=>{setVolume("")}}>Reset</button>
+          <button onClick={()=>handleFill()}>Fill cups</button>
+          <button type="reset" onClick={()=>{handleReset()}}>Reset</button>
         </div>
       </div>
-      <TowerComponent/>
+
+      {showTower&& <TowerComponent cupTower={cupTower} />}
 
 
       </>
