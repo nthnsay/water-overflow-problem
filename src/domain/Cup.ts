@@ -3,16 +3,23 @@ class Cup{
     capacity: number =0
     
     maxCapacity: number = 250
-    
-    cupLeft: Cup | undefined
-    cupRight: Cup| undefined
 
     public isCupFull =()=>{
         return this.capacity === this.maxCapacity
     }
 
     public fillCup =(volume: number)=>{
-        this.capacity += volume
+        
+       
+       if(volume <= this.maxCapacity){
+           this.capacity += volume
+            return 0
+       }else{
+           this.capacity+= this.maxCapacity
+           return volume - 250
+       }
+      
+    
     }
 
 }
