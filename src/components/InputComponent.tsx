@@ -7,13 +7,14 @@ const InputComponent: React.FC =()=>{
   const [volume, setVolume] = useState<string>("");
   const [showTower, setShowTower] = useState<boolean>(false);
 
-  const [waterForTower, setWaterForTower]= useState<number>(0)
   const [cupTower, setCupTower] = useState<CupTower>(new CupTower())
   const handleFill=()=>{
-    if(!isNaN(Number(volume))){
-      cupTower.fillCupTower(Number(volume)* 1000)
+    if(!isNaN(Number(volume)) && volume !==""){
+      let value = Number(volume)
+      console.log(value)
+      cupTower.fillCupTower(value* 1000)
       setShowTower(true)
-      console.log()
+      // setVolume("")
     }
   }
   const handleReset=()=>{
@@ -29,14 +30,14 @@ const InputComponent: React.FC =()=>{
           Water overflow problem
         </h2>
         <label className="input">
-          <input className="input__field" onChange={(e)=>{
+          <input disabled={showTower?true:false} className="input__field" onChange={(e)=>{
             setVolume(e.target.value)
           }} value={volume}type="text" placeholder=" "/>
-          <span className="input__label">Enter volume in litres(L)</span>
+          <span className="input__label">{showTower?"Press reset to fill again":"Enter volume in litres(L)"}</span>
         </label>
         <div className="button-group">
-          <button onClick={()=>handleFill()}>Fill cups</button>
-          <button type="reset" onClick={()=>{handleReset()}}>Reset</button>
+          {showTower? <button type="reset"onClick={()=>{handleReset()}}>Reset</button>:
+            <button onClick={()=>handleFill()}>Fill cups</button>}
         </div>
       </div>
 

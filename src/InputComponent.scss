@@ -108,6 +108,9 @@ button {
     &[type="reset"] {
         background: var(--color-background);
         font-weight: 200;
+        border: solid 2px #49e2fd;
+
+        border-radius: var(--size-radius);
     }
 }
 

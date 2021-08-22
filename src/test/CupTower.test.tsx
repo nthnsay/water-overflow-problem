@@ -1,6 +1,6 @@
 
 import { CupTower} from '../domain/CupTower';
-test('fill cup tower with 0.250L i=0, j=0', () => {
+test('fill cup tower with 0.250L i=0, j=0 capacity=250', () => {
    const cupTower= new CupTower()
    cupTower.fillCupTower(250)
    expect(cupTower.getLastFilledCupCapacity()).toEqual({i:0, j:0, capacity:250})
@@ -8,48 +8,30 @@ test('fill cup tower with 0.250L i=0, j=0', () => {
 
 });
 
-test('fill cup tower with 3L i=0, j=0', () => {
+test('find i when volume is 5250', () => {
     const cupTower= new CupTower() 
-    cupTower.originalVolume = 3100
+    cupTower.originalVolume = 5250
 
     cupTower.findi()
-    expect(cupTower.i).toEqual(3)
+    expect(cupTower.i).toEqual(6)
          
  });
 
- test('fill cup tower with 3L i=0, j=0', () => {
-    const cupTower= new CupTower() 
 
-    expect(cupTower.getNumberOfCups(0)).toEqual(1)
-         
- });
 
-test('fill cup tower with 3L i=0, j=0', () => {
+test('fill cup tower with 3L i=4, j=1', () => {
     const cupTower= new CupTower() 
     cupTower.fillCupTower(3000)
 
-    expect(cupTower.getLastFilledCupCapacity()).toEqual({i:3, j:4, capacity:250})
+    expect(cupTower.getLastFilledCupCapacity()).toEqual({i:4, j:1, capacity:250})
          
  });
 
- test('fill cup tower with 3L i=0, j=0', () => {
+ test('fill cup tower with 4.187L i=5, j=1 capacity=187', () => {
     const cupTower= new CupTower() 
-    cupTower.fillCupTower(3100)
+    cupTower.fillCupTower(4187)
 
-    expect(cupTower.getLastFilledCupCapacity()).toEqual({i:3, j:5, capacity:100})
+    expect(cupTower.getLastFilledCupCapacity()).toEqual({i:5, j:1, capacity:187})
          
  });
-
-// //  test('fill cup tower with 3L i=0, j=0', () => {
-// //     const cupTower= new CupTower() 
-// //     cupTower.fillCupTower(3)
-// //     expect(cupTower.getLastFilledCupCapacity()).toEqual({i:4, j:0, capacity:250})
-         
-// //  });
-
-// //  test('if volume is 4000 i=4',()=>{
-// //      const cupTower = new CupTower()
-// //     cupTower.i = 4000
-// //      expect(cupTower.findi()).toEqual(4)
-// //  })
 

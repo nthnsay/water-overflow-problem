@@ -13,7 +13,7 @@ class CupTower{
         
         for(let currentRow =0; currentRow<=this.i; currentRow++){
             let cupRow = []
-            let numberOfCups= this.getNumberOfCups(currentRow)
+            let numberOfCups= currentRow
     
             for( let i=0; i<numberOfCups; i++){
                 const cup = new Cup()
@@ -26,15 +26,16 @@ class CupTower{
     }
 
     public findi( ){
-        if(this.originalVolume >=250){
-            const value = Math.floor(this.originalVolume/250)
-            const i= Math.floor(Math.log2(value))
-            this.i = i
+        let count = 1
+        let rowVolume = 0
+        this.i=count
+        while( this.originalVolume >rowVolume){
+            rowVolume = rowVolume +250 * count
+            if(rowVolume >= this.originalVolume){
+                this.i = count
+            }
+            count++
         }
-    }
-
-    public getNumberOfCups(currentRow: number){
-        return Math.pow(2,currentRow)
     }
 
     public insertIntoCupTowerList(list: Cup[]){
@@ -51,13 +52,13 @@ class CupTower{
         let jthCapacity= 0
         
         for(let n = 0; n< currentRow.length; n++){
-            if(n>0 && currentRow[n].capacity >0 ){
+            if(currentRow[n].capacity >0 ){
                 jthCup= n
                 jthCapacity = currentRow[n].capacity
             }
         }
 
-        return{i:this.i, j: jthCup, capacity:jthCapacity}
+        return{i:this.i-1, j: jthCup, capacity:jthCapacity}
 
     }
 }
